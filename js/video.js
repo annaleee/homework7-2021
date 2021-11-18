@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
 media.loop=true;
 play.addEventListener('click',function() {
 	media.play();
-	document.querySelector('#volume').innerHTML = video.volume * 100 + '%';
+	document.querySelector('#volume').innerHTML = media.volume * 100 + '%';
 	console.log("Play Video");
 });
 pause.addEventListener('click',function(){
