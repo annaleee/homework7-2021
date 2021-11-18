@@ -49,14 +49,14 @@ original.addEventListener('click',function(){
 
 function forward(){
 	console.log("Original location "+media.currentTime);
-	if(video.currentTime < video.duration - 15){
-		video.currentTime += 15;
+	if(media.currentTime < media.duration - 15){
+		media.currentTime += 15;
 	}
 	else{
-		video.currentTime = 0;
+		media.currentTime = 0;
 		console.log("Going back to beginning");
 	}
-	console.log("New location" + video.currentTime);
+	console.log("New location " + media.currentTime);
 };
 function muteOrNot(){
 	if(media.volume!=0){
