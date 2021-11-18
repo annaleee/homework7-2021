@@ -17,8 +17,8 @@ window.addEventListener("load", function() {
 });
 media.loop=true;
 play.addEventListener('click',function() {
-	media.volume=1;
 	media.play();
+	document.querySelector('#volume').innerHTML = video.volume * 100 + '%';
 	console.log("Play Video");
 });
 pause.addEventListener('click',function(){
@@ -37,6 +37,10 @@ skipAhead.addEventListener('click',forward);
 mute.addEventListener('click',muteOrNot)
 slider.onchange=function(){
 	console.log(this.value/100);
+	if(mute.innerHTML=="Unmute"){
+		media.muted = false;
+		mute.innerHTML="Mute";
+	}
 	let vol = document.querySelector("#volume").innerHTML = this.value + "%";
 	media.volume = (this.value/100);
 };
@@ -49,7 +53,7 @@ original.addEventListener('click',function(){
 
 function forward(){
 	console.log("Original location "+media.currentTime);
-	if(media.currentTime < media.duration - 15){
+	if(media.currentTime < media.duration - 15.001){
 		media.currentTime += 15;
 	}
 	else{
@@ -59,15 +63,15 @@ function forward(){
 	console.log("New location " + media.currentTime);
 };
 function muteOrNot(){
-	if(media.volume!=0){
-		media.volume=0;
+	if(!media.muted){
+		media.muted = true;
 		mute.innerHTML="Unmute";
 		slider.value=0;
 		vol = document.querySelector("#volume").innerHTML = media.volume*100 + "%";
 	}else{
-		media.volume=1;
-		mute.innerHTML="mute";
-		slider.value=100;
+		media.muted=false;
+		mute.innerHTML="Mute";
+		slider.value=media.volume*100;
 		vol = document.querySelector("#volume").innerHTML = media.volume*100 + "%";
 	}
 };
