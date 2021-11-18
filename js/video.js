@@ -9,7 +9,6 @@ var slider=document.getElementById('slider');
 var vintage=document.getElementById('vintage');
 var original=document.getElementById('orig');
 
-vol = document.querySelector("#volume").innerHTML = media.volume*100 + "%";
 
 window.addEventListener("load", function() {
 	console.log("Good job opening the window")
